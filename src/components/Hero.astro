@@ -1,25 +1,34 @@
 ---
 import { RotatingText } from '../react-components';
-       
+
 ---
 
 <section id="hero">
   <div id="intro">
-    Building <div class="elegant">robust</div>, scalable web <div class="elegant">experiences</div>.
+    Building&nbsp<div class="elegant">robust</div>, scalable web&nbsp<div class="elegant">experiences</div>.
   </div>
   <div id="description">
     <main>Full-stack developer, backend-first. I build production-grade web applications end-to-end,
     from database schema and API design to server infrastructure and deployment.
     </main>
     <footer>
-      If you need <RotatingText items={["websites", "databases", "AI integrations", "SaaS products", "backend systems", "bots", "applications"]}client:load />, I can build it.
+      If you need <div class="react-container"><RotatingText items={["Websites", "Databases", "AI integrations", "SaaS products", "Backend systems", "Bots", "Applications"]}client:load /></div>, I can build it.
     </footer>
     
   </div>
 </section>
 
 <style>
+  * {
+    font-family: var(--font-text);
+  }
   #hero {
-
+    margin: 5% 3% 3% 3%;
+  }
+  #intro {
+    display: flex;
+  }
+  .elegant {
+    font-family: var(--font-text-elegant);
   }
 </style>

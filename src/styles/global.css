@@ -19,9 +19,12 @@
   --color-text-description: #cecbc4;
   --color-text-index: #bbb8b1;
 
-  
+
   --color-accent: #3245ff;
   --color-accent-hover: #1a2fd4;
+
+  --font-text: 'Syne', Inter, Arial, sans-serif;
+  --font-text-elegant: 'Playfair Display', Georgia, serif;
 }
 
 
@@ -76,7 +79,7 @@ body {
   min-height: 100%;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.2s ease, color 0.2s ease;
