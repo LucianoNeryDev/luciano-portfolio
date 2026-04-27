@@ -1,0 +1,88 @@
+<section id="sidebar">
+  <div id="profile">
+    <img id="profile-pic" src="profile_picture.png">
+    <span class="name">Luciano Nery</span>
+    <span class="title">Full-Stack Developer</span>
+  </div>
+  <div id="index">
+    <span class="title">INDEX</span>
+    <a><div class="name">Work</div><div class="number">01</div></a>
+    <a><div class="name">Skills</div><div class="number">02</div></a>
+    <a><div class="name">Education</div><div class="number">03</div></a>
+    <a><div class="name">About</div><div class="number">04</div></a>
+    <a><div class="name">Contact</div><div class="number">05</div></a>
+  </div>
+  <div id="languages">
+    <span class="title">LANGUAGES</span>
+    <li><div class="name">Portuguese</div><div class="level">Native</div></li>
+    <li><div class="name">English</div><div class="level">Fluent</div></li>
+    <li><div class="name">Italian</div><div class="level">Fluent</div></li>
+  </div>
+  <div id="contacts">
+    <span class="title">CONNECT</span>
+    <div class="row"><a href="https://github.com/Tarsow">Github</a></div>
+    <div class="row"><a>Linkedin</a></div>
+    <div class="row"><a>Email</a></div>
+  </div>
+</section>
+
+<style>
+  #sidebar {
+    padding: 1rem;
+    border-radius: 0 0 1rem 0;
+    background-color: var(--color-blue-1);
+    border-right: 3px solid var(--color-blue-3);
+    border-bottom: 3px solid var(--color-blue-4);
+  }
+  #sidebar > * {
+    margin: 0.7rem 0.7rem 2rem 0.7rem
+  }
+  #profile{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  #profile-pic{
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    object-position: 50% 40%;
+    border-radius: 50%;
+    margin: 1rem;
+    border: 3px solid var(--color-blue-4);
+  }
+  #index > a {
+    display: flex;
+    justify-content: space-between;
+  }
+  #languages > li {
+    display:flex;
+    justify-content: space-between;
+  }
+  #contacts {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #contacts > .row {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  #contacts > .row > a {
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    background-color: var(--color-blue-2);
+    border-color: var(--color-blue-3)
+    border: var(--color-blue-3) 
+    width: 7rem;
+    text-align: center;
+    margin: 0.1rem;
+    
+  }
+
+  #contacts > .row:hover{
+    transform: scale(1.5);
+  }
+  
+
+</style>
