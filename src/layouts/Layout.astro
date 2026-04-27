@@ -3,34 +3,46 @@ import { Head } from '../components';
 import '../styles/global.css';
 import '@fontsource/playfair-display/400.css';
 import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/400-italic.css';
 import '@fontsource/syne/400.css';
+import '@fontsource/syne/600.css';
 import '@fontsource/syne/700.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
 ---
 
-<html>
+<html lang="en">
   <Head />
   <body>
-    <aside><slot name="sidebar"/></aside>
-    <section>
-      <header><slot name="topbar"/></header>
+    <div class="shell">
+      <aside><slot name="sidebar" /></aside>
       <main><slot /></main>
-    </section>
+    </div>
   </body>
 </html>
 
 <style>
-  body{
+  .shell {
     display: flex;
-    flex-direction: row;
-    flex-wrap:nowrap;
-    justify-content: baseline ;
+    min-height: 100vh;
   }
-
   aside {
-
+    display: none;
+    width: 360px;
+    flex-shrink: 0;
+    background: var(--color-ink);
+    border-right: 1px solid var(--color-hairline);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow: hidden;
   }
-
   main {
-
+    flex: 1;
+    min-width: 0;
+  }
+  @media (min-width: 1024px) {
+    aside { display: flex; flex-direction: column; }
   }
 </style>

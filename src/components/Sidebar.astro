@@ -1,88 +1,148 @@
+---
+const navItems = [
+  { href: '#work', label: 'Work', num: '01' },
+  { href: '#skills', label: 'Skills', num: '02' },
+  { href: '#education', label: 'Education', num: '03' },
+  { href: '#about', label: 'About', num: '04' },
+  { href: '#contact', label: 'Contact', num: '05' },
+];
+
+const languages = [
+  { name: 'Portuguese', level: 'Native' },
+  { name: 'English', level: 'Fluent' },
+  { name: 'Italian', level: 'Fluent' },
+];
+---
+
 <section id="sidebar">
-  <div id="profile">
-    <img id="profile-pic" src="profile_picture.png">
-    <span class="name">Luciano Nery</span>
-    <span class="title">Full-Stack Developer</span>
+  <div class="identity">
+    <div class="avatar">
+      <img src="/profile_picture.png" alt="Luciano Nery" />
+    </div>
+    <div class="name">
+      Luciano<br />
+      <span class="italic-serif">Nery</span>
+    </div>
+    <div class="role">Full-Stack Developer</div>
   </div>
-  <div id="index">
-    <span class="title">INDEX</span>
-    <a><div class="name">Work</div><div class="number">01</div></a>
-    <a><div class="name">Skills</div><div class="number">02</div></a>
-    <a><div class="name">Education</div><div class="number">03</div></a>
-    <a><div class="name">About</div><div class="number">04</div></a>
-    <a><div class="name">Contact</div><div class="number">05</div></a>
+
+  <nav class="index">
+    <div class="eyebrow">Index</div>
+    {navItems.map(item => (
+      <a href={item.href} class="row">
+        <span class="row-label">{item.label}</span>
+        <span class="row-num">{item.num}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="languages">
+    <div class="eyebrow">Languages</div>
+    {languages.map(l => (
+      <div class="row soft">
+        <span class="row-label sm">{l.name}</span>
+        <span class="row-level">{l.level}</span>
+      </div>
+    ))}
   </div>
-  <div id="languages">
-    <span class="title">LANGUAGES</span>
-    <li><div class="name">Portuguese</div><div class="level">Native</div></li>
-    <li><div class="name">English</div><div class="level">Fluent</div></li>
-    <li><div class="name">Italian</div><div class="level">Fluent</div></li>
-  </div>
-  <div id="contacts">
-    <span class="title">CONNECT</span>
-    <div class="row"><a href="https://github.com/Tarsow">Github</a></div>
-    <div class="row"><a>Linkedin</a></div>
-    <div class="row"><a>Email</a></div>
+
+  <div class="connect">
+    <div class="eyebrow">Connect</div>
+    <ul>
+      <li><a href="https://github.com/Tarsow"><span>→</span> GitHub</a></li>
+      <li><a href="#"><span>→</span> LinkedIn</a></li>
+      <li><a href="mailto:tarsowdev@gmail.com"><span>→</span> Email</a></li>
+    </ul>
   </div>
 </section>
 
 <style>
   #sidebar {
-    padding: 1rem;
-    border-radius: 0 0 1rem 0;
-    background-color: var(--color-blue-1);
-    border-right: 3px solid var(--color-blue-3);
-    border-bottom: 3px solid var(--color-blue-4);
-  }
-  #sidebar > * {
-    margin: 0.7rem 0.7rem 2rem 0.7rem
-  }
-  #profile{
     display: flex;
     flex-direction: column;
-    
+    padding: 32px 32px 28px;
+    height: 100%;
+    overflow: hidden;
   }
-  #profile-pic{
-    width: 10rem;
-    height: 10rem;
-    object-fit: cover;
-    object-position: 50% 40%;
+
+  .identity .avatar {
+    width: 166px;
+    height: 166px;
     border-radius: 50%;
-    margin: 1rem;
-    border: 3px solid var(--color-blue-4);
+    border: 1px solid rgba(232, 228, 220, 0.3);
+    overflow: hidden;
+    margin-bottom: 32px;
   }
-  #index > a {
+  .identity .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .identity .name {
+    font-family: var(--font-serif);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--color-bone);
+  }
+  .identity .name .italic-serif { color: rgba(232, 228, 220, 0.85); }
+  .identity .role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.45);
+    margin-top: 14px;
+  }
+
+  .index { margin-top: 36px; }
+  .languages { margin-top: 28px; }
+  .connect { margin-top: auto; padding-top: 28px; }
+
+  .eyebrow { margin-bottom: 14px; letter-spacing: 0.18em; font-size: 11px; }
+
+  .row {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-hairline);
+    transition: border-color .2s ease;
   }
-  #languages > li {
-    display:flex;
-    justify-content: space-between;
+  .row.soft { border-bottom-color: rgba(232, 228, 220, 0.05); padding: 7px 0; }
+  a.row:hover { border-bottom-color: rgba(232, 228, 220, 0.4); }
+  a.row:hover .row-label { color: var(--color-bone); }
+
+  .row-label {
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: rgba(232, 228, 220, 0.85);
+    transition: color .2s ease;
   }
-  #contacts {
-    display:flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .row-label.sm { font-size: 14px; }
+  .row-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(232, 228, 220, 0.35);
   }
-  #contacts > .row {
-    transform: scale(1);
-    transition: transform 0.3s ease;
+  .row-level {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.4);
   }
 
-  #contacts > .row > a {
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    background-color: var(--color-blue-2);
-    border-color: var(--color-blue-3)
-    border: var(--color-blue-3) 
-    width: 7rem;
-    text-align: center;
-    margin: 0.1rem;
-    
+  .connect ul { display: flex; flex-direction: column; gap: 8px; }
+  .connect a {
+    font-size: 14px;
+    color: rgba(232, 228, 220, 0.7);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color .2s ease;
   }
-
-  #contacts > .row:hover{
-    transform: scale(1.5);
+  .connect a span {
+    color: rgba(232, 228, 220, 0.3);
+    transition: color .2s ease;
   }
-  
-
+  .connect a:hover { color: var(--color-bone); }
+  .connect a:hover span { color: rgba(232, 228, 220, 0.6); }
 </style>

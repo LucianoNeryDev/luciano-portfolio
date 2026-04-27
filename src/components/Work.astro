@@ -1,0 +1,250 @@
+---
+const otherProjects = [
+  {
+    num: '02',
+    kind: 'Web Application',
+    title: 'Project Two',
+    description: 'A short description of this project — what it does, why it matters, and the engineering decisions behind it.',
+    tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'Cloudflare'],
+    flipped: false,
+  },
+  {
+    num: '03',
+    kind: 'Developer Tool',
+    title: 'Project Three',
+    description: 'A short description of this project — what it does, why it matters, and the engineering decisions behind it.',
+    tags: ['Python', 'Astro', 'Supabase', 'Redis'],
+    flipped: true,
+  },
+];
+---
+
+<section id="work" class="section">
+  <div class="section-marker">
+    <span class="num">01</span>
+    <span class="rule"></span>
+    <span class="label">Selected Work</span>
+  </div>
+
+  <div class="head">
+    <h2 class="section-title">
+      Selected<br /><span class="accent">projects.</span>
+    </h2>
+    <a href="#" class="archive-link">View archive ↗</a>
+  </div>
+
+  <!-- Featured: Senti -->
+  <article class="featured">
+    <div class="meta">
+      <span class="meta-num">№ 01</span>
+      <span class="meta-kind">Featured</span>
+      <span class="dot"></span>
+      <span class="meta-live">Live</span>
+    </div>
+    <h3 class="project-title">Senti</h3>
+
+    <div class="hero-img placeholder-img">
+      <span>senti — full-bleed product hero</span>
+    </div>
+
+    <div class="grid-7-5">
+      <div>
+        <p class="quote">A free music streaming and download platform.</p>
+        <p class="body">
+          Mobile app, marketing site, and backend infrastructure built end-to-end.
+          Live on Google Play with a self-hosted server fronted by Cloudflare and
+          observed with Grafana, Prometheus, and Loki.
+        </p>
+        <div class="tags">
+          {['React', 'Node.js', 'PostgreSQL', 'Redis', 'Hetzner', 'Docker'].map(t => (
+            <span class="tag">{t}</span>
+          ))}
+        </div>
+        <div class="ctas">
+          <a class="btn btn-solid btn-sm" href="#">Live site ↗</a>
+          <a class="btn btn-outline btn-sm" href="#">Play Store ↗</a>
+          <a class="btn btn-outline btn-sm" href="#">GitHub ↗</a>
+        </div>
+      </div>
+
+      <aside class="specs">
+        <div class="eyebrow">Specifications</div>
+        <dl>
+          <div><dt>Role</dt><dd>Solo full-stack</dd></div>
+          <div><dt>Stack</dt><dd>React · Node · Postgres</dd></div>
+          <div><dt>Hosting</dt><dd>Hetzner · Cloudflare</dd></div>
+          <div><dt>Status</dt><dd>Live · 2024 — present</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </article>
+
+  {otherProjects.map(p => (
+    <article class={`other ${p.flipped ? 'flipped' : ''}`}>
+      <div class="other-img placeholder-img">
+        <span>project {p.num} — visual</span>
+      </div>
+      <div class="other-body">
+        <div class="meta sm">
+          <span class="meta-num">№ {p.num}</span>
+          <span class="meta-kind">{p.kind}</span>
+        </div>
+        <h3 class="other-title">{p.title}</h3>
+        <p class="body">{p.description}</p>
+        <div class="tags">{p.tags.map(t => <span class="tag">{t}</span>)}</div>
+        <div class="ctas">
+          <a class="btn btn-outline btn-sm" href="#">Case study ↗</a>
+          <a class="btn btn-outline btn-sm" href="#">GitHub ↗</a>
+        </div>
+      </div>
+    </article>
+  ))}
+</section>
+
+<style>
+  .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  @media (min-width: 768px) {
+    .head { flex-direction: row; align-items: end; }
+  }
+  .archive-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.45);
+    transition: color .2s ease;
+  }
+  .archive-link:hover { color: var(--color-bone); }
+
+  .meta {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .meta-num { color: rgba(232, 228, 220, 0.4); }
+  .meta-kind { color: rgba(232, 228, 220, 0.55); }
+  .meta-live { color: rgba(52, 211, 153, 0.8); }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: #34d399; }
+
+  .featured { margin-bottom: 112px; }
+  .project-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-size: clamp(56px, 8vw, 80px);
+    margin-bottom: 48px;
+  }
+  .hero-img {
+    border: 1px solid rgba(232, 228, 220, 0.2);
+    aspect-ratio: 21 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+  .hero-img span,
+  .other-img span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.35);
+  }
+
+  .grid-7-5 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .grid-7-5 { grid-template-columns: 7fr 5fr; gap: 64px; }
+  }
+  .quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.55;
+    color: rgba(232, 228, 220, 0.85);
+    margin-bottom: 24px;
+  }
+  @media (min-width: 1280px) { .quote { font-size: 22px; } }
+  .body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(232, 228, 220, 0.65);
+    margin-bottom: 32px;
+  }
+  @media (min-width: 1280px) { .body { font-size: 15px; } }
+
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+  .specs { padding-top: 0; }
+  @media (min-width: 768px) {
+    .specs { border-left: 1px solid var(--color-hairline); padding-left: 40px; }
+  }
+  .specs dl { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+  .specs div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(232, 228, 220, 0.05);
+  }
+  .specs dt {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.4);
+  }
+  .specs dd {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: rgba(232, 228, 220, 0.95);
+    text-align: right;
+  }
+
+  .other {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 96px;
+    align-items: center;
+  }
+  .other:last-child { margin-bottom: 0; }
+  @media (min-width: 768px) {
+    .other { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .other.flipped .other-img { order: 2; }
+    .other.flipped .other-body { order: 1; }
+  }
+  .other-img {
+    border: 1px solid rgba(232, 228, 220, 0.2);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .other-title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-size: clamp(40px, 5vw, 48px);
+    margin-bottom: 20px;
+  }
+</style>

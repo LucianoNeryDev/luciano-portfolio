@@ -1,0 +1,66 @@
+---
+const categories = [
+  { num: '01', title: 'Frontend', tags: ['TypeScript', 'React', 'Next.js', 'Astro', 'Tailwind CSS', 'Redux'] },
+  { num: '02', title: 'Backend', tags: ['Node.js', 'FastAPI', 'Express', 'GraphQL', 'Prisma', 'SQLAlchemy'] },
+  { num: '03', title: 'Auth & Testing', tags: ['JWT', 'OAuth 2.0', 'Playwright', 'Jest'] },
+  { num: '04', title: 'Databases', tags: ['PostgreSQL', 'Redis', 'MongoDB', 'Supabase', 'MySQL'] },
+  { num: '05', title: 'Infrastructure', tags: ['Docker', 'Kubernetes', 'Nginx', 'Hetzner', 'Cloudflare', 'GitHub Actions'] },
+  { num: '06', title: 'Observability', tags: ['Grafana', 'Prometheus', 'Loki'] },
+];
+---
+
+<section id="skills" class="section">
+  <div class="section-marker">
+    <span class="num">02</span>
+    <span class="rule"></span>
+    <span class="label">Tools &amp; Stack</span>
+  </div>
+
+  <h2 class="section-title">
+    What I<br /><span class="accent">work with.</span>
+  </h2>
+
+  <div class="grid">
+    {categories.map(c => (
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-num">{c.num}</span>
+          <span class="cat-title">{c.title}</span>
+        </div>
+        <div class="tags">{c.tags.map(t => <span class="tag">{t}</span>)}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .section-title { margin-bottom: 80px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1280px) { .grid { grid-template-columns: 1fr 1fr 1fr; gap: 64px; } }
+
+  .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(232, 228, 220, 0.25);
+  }
+  .cat-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(232, 228, 220, 0.4);
+  }
+  .cat-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--color-bone);
+  }
+</style>
