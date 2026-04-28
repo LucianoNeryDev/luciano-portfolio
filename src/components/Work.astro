@@ -1,4 +1,15 @@
 ---
+import { Image } from 'astro:assets';
+import sentiHome from '../assets/senti-app/mobile-homepage.jpeg';
+import sentiSearch from '../assets/senti-app/mobile-search.jpeg';
+import sentiSearchKeyboard from '../assets/senti-app/mobile-search-keyboard.jpeg';
+
+const sentiShots = [
+  { src: sentiHome, alt: 'Senti mobile homepage' },
+  { src: sentiSearch, alt: 'Senti mobile search' },
+  { src: sentiSearchKeyboard, alt: 'Senti mobile search with keyboard' },
+];
+
 const otherProjects = [
   {
     num: '02',
@@ -43,8 +54,12 @@ const otherProjects = [
     </div>
     <h3 class="project-title">Senti</h3>
 
-    <div class="hero-img placeholder-img">
-      <span>senti — full-bleed product hero</span>
+    <div class="hero-shots">
+      {sentiShots.map(s => (
+        <div class="shot">
+          <Image src={s.src} alt={s.alt} class="shot-img" />
+        </div>
+      ))}
     </div>
 
     <div class="grid-7-5">
@@ -155,6 +170,31 @@ const otherProjects = [
     justify-content: center;
     margin-bottom: 48px;
     overflow: hidden;
+  }
+  .hero-shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .hero-shots { gap: 32px; max-width: 60%; }
+  }
+  .shot {
+    border: 1px solid rgba(232, 228, 220, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 9 / 19.5;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .shot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .hero-img span,
   .other-img span {
