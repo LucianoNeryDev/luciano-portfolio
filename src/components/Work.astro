@@ -54,16 +54,16 @@ const otherProjects = [
     </div>
     <h3 class="project-title">Senti</h3>
 
-    <div class="hero-shots">
-      {sentiShots.map(s => (
-        <div class="shot">
-          <Image src={s.src} alt={s.alt} class="shot-img" />
-        </div>
-      ))}
-    </div>
+    <div class="featured-grid">
+      <div class="hero-shots">
+        {sentiShots.map((s, i) => (
+          <div class={`shot shot-${i}`}>
+            <Image src={s.src} alt={s.alt} class="shot-img" />
+          </div>
+        ))}
+      </div>
 
-    <div class="grid-7-5">
-      <div>
+      <div class="featured-body">
         <p class="quote">A free music streaming and download platform.</p>
         <p class="body">
           Mobile app, marketing site, and backend infrastructure built end-to-end.
@@ -94,7 +94,7 @@ const otherProjects = [
     </div>
   </article>
 
-  {otherProjects.map(p => (
+  {false && otherProjects.map(p => (
     <article class={`other ${p.flipped ? 'flipped' : ''}`}>
       <div class="other-img placeholder-img">
         <span>project {p.num} — visual</span>
@@ -171,30 +171,66 @@ const otherProjects = [
     margin-bottom: 48px;
     overflow: hidden;
   }
-  .hero-shots {
+  .featured-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 48px;
-    max-width: 65%;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
   }
   @media (min-width: 768px) {
-    .hero-shots { gap: 32px; max-width: 60%; }
+    .featured-grid {
+      grid-template-columns: minmax(260px, 1fr) 1.6fr;
+      grid-template-areas:
+        "shots body"
+        "shots specs";
+      gap: 56px;
+      align-items: start;
+    }
+    .hero-shots { grid-area: shots; }
+    .featured-body { grid-area: body; }
+    .featured-grid > .specs {
+      grid-area: specs;
+      margin-top: 24px;
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--color-hairline);
+      padding-top: 24px;
+    }
+  }
+  .hero-shots {
+    position: relative;
+    width: 100%;
+    max-width: 312px;
+    aspect-ratio: 9 / 19.5;
+    margin: 0 auto;
   }
   .shot {
+    position: absolute;
+    inset: 0;
     border: 1px solid rgba(232, 228, 220, 0.2);
-    border-radius: 12px;
+    border-radius: 18px;
     overflow: hidden;
-    aspect-ratio: 9 / 19.5;
     background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: shotRotate 12s infinite ease-in-out;
   }
+  .shot-0 { animation-delay: 0s; }
+  .shot-1 { animation-delay: 4s; }
+  .shot-2 { animation-delay: 8s; }
   .shot-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  @keyframes shotRotate {
+    0%       { opacity: 0; transform: translateY(8px) scale(0.98); }
+    5%, 30%  { opacity: 1; transform: translateY(0) scale(1); }
+    35%, 100% { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shot { animation: none; }
+    .shot-0 { opacity: 1; }
   }
   .hero-img span,
   .other-img span {
